@@ -1,5 +1,1 @@
-print('hello')
-print('second hello')
-print('third hello')
-print('fourth')
-print('fifth')
+print('this should be the only one')

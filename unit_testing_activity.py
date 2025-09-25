@@ -5,8 +5,9 @@
 
 
 def addition(x,y):
-    sum = (x) + (y)
+    sum = int(x) + int(y)
     print(sum)
     return sum
 
-addition(input('enter number 1 to add: '), input('enter number 2 to add: '))
+def run():
+    addition(input('enter number 1 to add: '), input('enter number 2 to add: '))

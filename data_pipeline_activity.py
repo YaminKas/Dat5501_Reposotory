@@ -10,7 +10,7 @@ import time
 # --------------------
 m_true = 2   # slope
 b_true = 5   # intercept
-n_points = 100
+n_points = 10
 
 X = np.linspace(0, 50, n_points)
 #noise = np.random.normal(0, 5, n_points)

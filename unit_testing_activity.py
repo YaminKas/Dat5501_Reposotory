@@ -5,7 +5,7 @@
 
 
 def addition(x,y):
-    sum = int(x) + int(y)
+    sum = float(x) + float(y)
     print(sum)
     return sum
 

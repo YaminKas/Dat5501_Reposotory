@@ -10,7 +10,7 @@ class testing_cases(unittest.TestCase):
 
         self.assertEqual(addition(-6,3),-3)
 
-        self.assertEqual(addition(3.1,5.4), 8.5)
+        self.assertEqual(addition(3.1,5.4), 9.5)
 
 if __name__ == "__main__":
     unittest.main()

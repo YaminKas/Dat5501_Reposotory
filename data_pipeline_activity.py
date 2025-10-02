@@ -13,8 +13,8 @@ b_true = 5   # intercept
 n_points = 100
 
 X = np.linspace(0, 50, n_points)
-noise = np.random.normal(0, 5, n_points)
-Y = m_true * X + b_true + noise
+#noise = np.random.normal(0, 5, n_points)
+Y = m_true * X + b_true #+ noise
 
 # Save to CSV with timestamped filename
 filename = f"synthetic_dat_{int(time.time())}.csv"

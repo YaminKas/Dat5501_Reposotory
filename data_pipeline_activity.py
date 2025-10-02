@@ -35,7 +35,7 @@ model.fit(X_loaded, Y_loaded)
 m_fit = model.coef_[0]
 b_fit = model.intercept_
 
-print(f"Fitted slope: {m_fit:.2f}, Fitted intercept: {b_fit:.2f}")
+#print(f"Fitted slope: {m_fit:.2f}, Fitted intercept: {b_fit:.2f}")
 
 # --------------------
 # Step 3: Unit test with tolerance

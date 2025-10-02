@@ -1,3 +1,20 @@
-from compound_interest_calculator import comp_int_calc
+import unittest
+from testing_activity import addition
 
-comp_int_calc()
+
+
+class testing_cases(unittest.TestCase):
+    def test_add(self):
+
+        self.assertEqual(addition(2,3),5)
+
+        self.assertEqual(addition(-6,3),-3)
+
+        self.assertEqual(addition(3.1,5.4), 8.5)
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+
+

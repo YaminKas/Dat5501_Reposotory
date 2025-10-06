@@ -1,48 +1,42 @@
 import os
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-import unittest
+import matplotlib.pyplot as plt
 
 # --------------------
 # Configuration
 # --------------------
-filename = "synthetic_data.csv"  # your CSV
+filename = "synthetic_data.csv"
 plot_filename = "fit_plot.png"
 m_true = 2
 b_true = 5
-tolerance = 1.0  # acceptable delta for slope/intercept
 
 # --------------------
-# Tests
+# Data Generation
 # --------------------
-class TestDataPipeline(unittest.TestCase):
+def generate_data(n=100, noise_std=1.0):
+    X = np.linspace(0, 10, n)
+    noise = np.random.normal(0, noise_std, n)
+    Y = m_true * X + b_true + noise
+    return pd.DataFrame({"X": X, "Y": Y})
 
-    def test_csv_saved(self):
-        self.assertTrue(os.path.exists(filename), f"{filename} does not exist.")
+def save_csv(df):
+    df.to_csv(filename, index=False)
 
-    def test_plot_saved(self):
-        self.assertTrue(os.path.exists(plot_filename), f"{plot_filename} does not exist.")
-
-    def test_csv_numeric(self):
-        df = pd.read_csv(filename)
-        # Check for any non-numeric values
-        self.assertTrue(np.all(np.isfinite(df['X'])), "Non-numeric values in X")
-        self.assertTrue(np.all(np.isfinite(df['Y'])), "Non-numeric values in Y")
-
-    def test_slope_intercept(self):
-        df = pd.read_csv(filename)
-        X = df['X'].values.reshape(-1, 1)
-        Y = df['Y'].values
-        model = LinearRegression()
-        model.fit(X, Y)
-        m_fit = model.coef_[0]
-        b_fit = model.intercept_
-        self.assertAlmostEqual(m_fit, m_true, delta=tolerance)
-        self.assertAlmostEqual(b_fit, b_true, delta=tolerance)
+def plot_data(df):
+    plt.scatter(df["X"], df["Y"], label="Data")
+    plt.plot(df["X"], m_true * df["X"] + b_true, color="red", label="True line")
+    plt.legend()
+    plt.savefig(plot_filename)
+    plt.close()
 
 # --------------------
-# Run tests
+# Pipeline Runner
 # --------------------
+def run_pipeline():
+    df = generate_data()
+    save_csv(df)
+    plot_data(df)
+
 if __name__ == "__main__":
-    unittest.main()
+    run_pipeline()

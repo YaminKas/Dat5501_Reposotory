@@ -3,17 +3,15 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# --------------------
-# Configuration
-# --------------------
+# setting the filenames ect
+
 filename = "synthetic_data.csv"
 plot_filename = "fit_plot.png"
 m_true = 2
 b_true = 5
 
-# --------------------
 # Data Generation
-# --------------------
+
 def generate_data(n=100, noise_std=1.0):
     X = np.linspace(0, 10, n)
     noise = np.random.normal(0, noise_std, n)

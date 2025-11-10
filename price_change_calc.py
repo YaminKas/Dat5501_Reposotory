@@ -11,15 +11,15 @@ differences = []
 movements = []
 
 for index, row in df.iterrows():
-    diff = row["Close"] - row["Open"]
-    differences.append(diff)
+    difference_in_price = (row["Close"] - row["Open"])
+    differences.append(round(difference_in_price,3))
     
-    if diff > 0:
-        movements.append("Rise")
-    elif diff < 0:
-        movements.append("Fall")
+    if difference_in_price > 0:
+        movements.append("Rise in price")
+    elif difference_in_price < 0:
+        movements.append("Fall in price")
     else:
-        movements.append("Flat")
+        movements.append("No change in price")
 
 df["Difference"] = differences
 df["Movement"] = movements

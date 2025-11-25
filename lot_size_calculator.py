@@ -2,7 +2,7 @@
 
 #Constants to be manually changed fpor ease
 
-account_size = float(50_000) #account size $50,000 USD
+account_size = float(100_000) #account size $50,000 USD
 risk_decimal = float(0.01)  #0.01 represents 1% risk
 stop_lost_pips = float(input('What is the stop loss in pips?: '))
 

@@ -97,3 +97,32 @@ plt.tight_layout()
 
 plt.savefig("poly_predictions.png", dpi=150)
 plt.show()
+
+#FIND BEST POLYNOMIAL USING R2
+
+from sklearn.metrics import r2_score
+
+r2_scores = []
+
+for degree in range(1, 11):
+    poly = PolynomialFeatures(degree)
+    X_poly = poly.fit_transform(X_train)
+
+    model = LinearRegression()
+    model.fit(X_poly, y_train)
+
+    y_pred = model.predict(X_poly)
+    score = r2_score(y_train, y_pred)
+    r2_scores.append(score)
+    print(f"Degree {degree} → R² = {score:.5f}")
+
+# Plot R² scores
+plt.figure(figsize=(10,5))
+plt.plot(range(1,11), r2_scores, marker='o', linewidth=2)
+plt.title("Polynomial Fit Quality (R² Score)")
+plt.xlabel("Polynomial Degree")
+plt.ylabel("R² Score")
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("best_r2_plot.png", dpi=150)
+plt.show()
